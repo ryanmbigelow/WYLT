@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Script from 'next/script';
 import { useState, useEffect } from 'react';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
@@ -56,6 +57,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
+      <Script src="https://e-cdn-files.dzcdn.net/js/min/dz.js" async />;
       <div>
         <Form onSubmit={handleSubmit} id="searchBar">
           <input className="form-control" type="text" placeholder="search" onChange={handleChange} value={searchInput} style={{ width: '300px', height: '40px' }} />
