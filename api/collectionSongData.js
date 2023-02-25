@@ -2,9 +2,9 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-// GET ALL SONGS
-const getSongs = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs.json`, {
+// GET ALL COLLECTION SONGS
+const getCollectionSongs = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -21,9 +21,9 @@ const getSongs = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// CREATE SONG
-const createSong = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs.json`, {
+// CREATE COLLECTION SONG
+const createColletionSong = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,9 +34,9 @@ const createSong = (payload) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
-// GET SINGLE SONG
-const getSingleSong = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs/${firebaseKey}.json`, {
+// GET SINGLE COLLECTION SONG
+const getSingleCollectionSong = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -47,9 +47,9 @@ const getSingleSong = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// DELETE SINGLE SONG
-const deleteSingleSong = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs/${firebaseKey}.json`, {
+// DELETE SINGLE COLLECTION SONG
+const deleteSingleCollectionSong = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -60,8 +60,8 @@ const deleteSingleSong = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // UPDATE SONG
-const updateSong = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs/${payload.firebaseKey}.json`, {
+const updateCollectionSong = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -74,9 +74,9 @@ const updateSong = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getSongs,
-  getSingleSong,
-  deleteSingleSong,
-  updateSong,
-  createSong,
+  getCollectionSongs,
+  getSingleCollectionSong,
+  deleteSingleCollectionSong,
+  updateCollectionSong,
+  createColletionSong,
 };
