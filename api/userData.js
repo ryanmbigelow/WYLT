@@ -73,10 +73,38 @@ const updateUser = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET USER SONGS
+const getUserSongs = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/songs.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// GET USER COLLECTION
+const getUserCollectionSongs = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/collectionSongs.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   getUsers,
   getSingleUser,
   deleteSingleUser,
   updateUser,
   createUser,
+  getUserSongs,
+  getUserCollectionSongs,
 };
