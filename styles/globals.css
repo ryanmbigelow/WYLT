@@ -20,3 +20,8 @@ a {
 body {
   background-color: #F6F7EB;
 }
+
+#songcardcontainer {
+  display: flex;
+  flex-direction: row;
+}
