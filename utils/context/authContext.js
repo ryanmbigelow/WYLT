@@ -7,8 +7,8 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { getSingleUser } from '../../api/userData';
 import { firebase } from '../client';
-import getSingleUser from '../../api/userData';
 
 const AuthContext = createContext();
 
@@ -40,7 +40,6 @@ const AuthProvider = (props) => {
             // if the user's uid exists, we can set the user to fbUser.
           }
         });
-        setUser(fbUser);
       } else {
         setUser(false);
       }
