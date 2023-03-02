@@ -35,8 +35,8 @@ const createUser = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // GET SINGLE USER
-const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/users/${firebaseKey}.json`, {
+const getSingleUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

@@ -8,6 +8,7 @@ import { useAuth } from '../utils/context/authContext';
 
 export default function SongCard({ songObj, onUpdate }) {
   const { user } = useAuth();
+
   const deleteSong = () => {
     if (window.confirm(`Delete ${songObj.title}?`)) {
       deleteSingleSong(songObj.firebaseKey).then(() => onUpdate());
@@ -15,8 +16,8 @@ export default function SongCard({ songObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Video variant="top" src={songObj.youtube_link} alt={songObj.title} style={{ height: '400px' }} controls />
+    <Card>
+      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: 420, height: 315 }} />
       <Card.Body>
         <Card.Title>{songObj.title} by {songObj.artist}</Card.Title>
         <Link href={`/pin/${songObj.firebaseKey}`} passHref>
