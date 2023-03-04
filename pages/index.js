@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { getSongs } from '../api/songData';
 import SongCard from '../components/cards/SongCard';
 import { signOut } from '../utils/auth';
@@ -17,6 +19,11 @@ function Home() {
   return (
     <div>
       <h1>Hello {user.displayName}! </h1>
+      <div>
+        <Link href="/song/new" passHref>
+          <Button variant="outline-dark" className="m-2">Add a Song</Button>
+        </Link>
+      </div>
       <div>
         <div id="songcardcontainer">
           {songs.map((song) => (
