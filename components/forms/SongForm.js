@@ -7,11 +7,11 @@ import { createSong, updateSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialStateSong = {
-  artist: PropTypes.string,
-  youtube_link: PropTypes.string,
-  title: PropTypes.string,
-  firebaseKey: PropTypes.string,
-  uid: PropTypes.string,
+  artist: '',
+  youtube_link: '',
+  title: '',
+  firebaseKey: '',
+  uid: '',
 };
 
 export default function SongForm({ songObj }) {
@@ -21,7 +21,7 @@ export default function SongForm({ songObj }) {
 
   useEffect(() => {
     if (songObj.firebaseKey) setFormInput(songObj);
-  }, [songObj]);
+  }, [songObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +49,6 @@ export default function SongForm({ songObj }) {
   return (
     <div>
       <Head><title>{songObj.firebaseKey ? `Update ${songObj.title}` : 'Create Song'}</title></Head>
-
       <Form onSubmit={handleSubmit} className="text-color-drkblu">
         <h2 className="mt-5 text-center">{songObj.firebaseKey ? `Update ${songObj.title}` : 'Create Song'}</h2>
         <div className="mt-5" />
@@ -70,7 +69,7 @@ export default function SongForm({ songObj }) {
         </FloatingLabel>
         <div className="">Artist</div>
         <FloatingLabel
-          controlId="floatingInput1"
+          controlId="floatingInput2"
           label="Artist"
           className="mb-3"
         >
