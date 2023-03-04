@@ -20,10 +20,10 @@ export default function SongCard({ songObj, onUpdate }) {
       <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: 420, height: 315 }} />
       <Card.Body>
         <Card.Title>{songObj.title} by {songObj.artist}</Card.Title>
-        <Link href={`/pin/${songObj.firebaseKey}`} passHref>
+        <Link href={`/song/${songObj.firebaseKey}`} passHref>
           <Button variant="outline-dark" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/pin/edit/${songObj.firebaseKey}`} passHref>
+        <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
           {songObj.uid === user.uid ? (<Button variant="outline-dark" className="m-2">EDIT</Button>) : '' }
         </Link>
         <>
