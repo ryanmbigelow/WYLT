@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getSongs } from '../api/songData';
-import SongCard from '../components/SongCard';
+import SongCard from '../components/cards/SongCard';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 
