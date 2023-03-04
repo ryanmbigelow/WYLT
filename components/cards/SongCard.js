@@ -10,7 +10,7 @@ export default function SongCard({ songObj, onUpdate }) {
   const { user } = useAuth();
 
   const deleteSong = () => {
-    if (window.confirm(`Delete ${songObj.title}?`)) {
+    if (window.confirm(`Delete ${songObj.title} by ${songObj.artist} from your collection?`)) {
       deleteSingleSong(songObj.firebaseKey).then(() => onUpdate());
     }
   };
