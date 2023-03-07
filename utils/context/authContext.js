@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { getSingleUser } from '../../api/userData';
+import { getUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -31,7 +31,7 @@ const AuthProvider = (props) => {
       if (fbUser) {
         setUid(fbUser.uid);
         // if the fbUser already exists, they will have a uid
-        await getSingleUser(fbUser.uid).then(async (response) => {
+        await getUser(fbUser.uid).then(async (response) => {
           if (Object.keys(response).length === 0) {
             setUser('NO USER');
             // if there is no user, the length of the object's keys is 0. therefore, we can setUser to NO USER which we will use later in the useMemo.

@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL FOLLOWS
-const getFollows = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/follows.json`, {
+const getFollows = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/follows.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
