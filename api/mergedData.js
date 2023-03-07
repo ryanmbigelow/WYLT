@@ -3,6 +3,7 @@ import { deleteSingleSong } from './songData';
 import {
   deleteSingleUser, getSingleUser, getUserCollectionSongs, getUserSongs,
 } from './userData';
+import { getFollows } from './followData';
 
 // GET A USER AND THEIR SONGS
 const getUserSongsRelationship = (firebaseKey) => new Promise((resolve, reject) => {
@@ -34,4 +35,13 @@ const deleteUserSongsRelationship = (firebaseKey) => new Promise((resolve, rejec
   ).catch(reject);
 });
 
-export { getUserSongsRelationship, getUserCollectionSongsRelationship, deleteUserSongsRelationship };
+// GET USERS BY USER FOLLOWS
+const getUserFollows = (uid) => new Promise((resolve, reject) => {
+  getFollows(uid).then((follow) => {
+    getSingleUser(follow.receiver_id).then(resolve);
+  }).catch(reject);
+});
+
+export {
+  getUserSongsRelationship, getUserCollectionSongsRelationship, deleteUserSongsRelationship, getUserFollows,
+};

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { createUser, getSingleUser, updateUser } from '../../api/userData';
+import { createUser, getUser, updateUser } from '../../api/userData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialStateUser = {
@@ -42,7 +42,7 @@ export default function UserForm({ obj }) {
       createUser(payload).then(({ name }) => {
         const patchPayloadFBK = { firebaseKey: name };
         updateUser(patchPayloadFBK).then(() => {
-          getSingleUser(uid).then((userData) => {
+          getUser(uid).then((userData) => {
             setUser(userData);
             router.push('/');
           });
