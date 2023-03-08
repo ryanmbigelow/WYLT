@@ -43,7 +43,7 @@ export default function Profile() {
         <h3>follows</h3>
         <div>
           {follows.map((follow) => (
-            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} />
+            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={user} />
           ))}
         </div>
       </div>
