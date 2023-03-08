@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { deleteSingleFollow } from '../../api/followData';
 import { useAuth } from '../../utils/context/authContext';
 
-export default function FriendCard({ friendObj, onUpdate }) {
+export default function FriendCard({ friendObj, onUpdate, appUser }) {
   const { user } = useAuth();
 
   const deleteThisFriend = () => {
@@ -22,10 +22,10 @@ export default function FriendCard({ friendObj, onUpdate }) {
         <Card.Body>
           <Card.Title>{friendObj.username}</Card.Title>
           <Link href={`/user/${friendObj.firebaseKey}`} passHref>
-            {friendObj.uid === user.uid ? (<Button variant="outline-dark" className="m-2">view profile</Button>) : '' }
+            {appUser.uid === user.uid ? (<Button variant="outline-dark" className="m-2">view profile</Button>) : '' }
           </Link>
           <>
-            {friendObj.uid === user.uid ? (
+            {appUser.uid === user.uid ? (
               <Button variant="outline-dark" className="m-2" onClick={deleteThisFriend}>
                 DELETE
               </Button>
@@ -46,4 +46,5 @@ FriendCard.propTypes = {
     uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
+  appUser: PropTypes.func.isRequired,
 };
