@@ -1,9 +1,10 @@
-import React, { useAuth } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteSingleFollow } from '../../api/followData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function FriendCard({ friendObj, onUpdate }) {
   const { user } = useAuth();

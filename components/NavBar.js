@@ -25,6 +25,13 @@ export default function NavBar() {
                 </a>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link passHref href="/profile">
+                <a className="nav-link">
+                  Profile
+                </a>
+              </Link>
+            </li>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>
