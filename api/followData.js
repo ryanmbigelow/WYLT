@@ -11,13 +11,7 @@ const getFollows = (uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    })
+    .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
 
