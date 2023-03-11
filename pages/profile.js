@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getFollows } from '../api/followData';
-// import { getUserFollows } from '../api/mergedData';
 import { getSongs } from '../api/songData';
 import { getSingleUser } from '../api/userData';
 import FriendCard from '../components/cards/FriendCard';
