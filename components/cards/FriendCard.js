@@ -46,5 +46,7 @@ FriendCard.propTypes = {
     uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
-  appUser: PropTypes.func.isRequired,
+  appUser: PropTypes.shape({
+    uid: PropTypes.string,
+  }).isRequired,
 };
