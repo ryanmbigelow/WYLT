@@ -61,13 +61,8 @@ const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    }).catch(reject);
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
 });
 
 // DELETE SINGLE USER

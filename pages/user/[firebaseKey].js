@@ -1,19 +1,23 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import { getFollows } from '../../api/followData';
+import { Button } from 'react-bootstrap';
+import { createFollow, getFollows, updateFollow } from '../../api/followData';
 import { getSongs } from '../../api/songData';
-import { getSingleUser } from '../../api/userData';
+import { getSingleUser, getUser } from '../../api/userData';
 import FriendCard from '../../components/cards/FriendCard';
 import SongCard from '../../components/cards/SongCard';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function Profile() {
+  const { user } = useAuth();
   const router = useRouter();
   const { firebaseKey } = router.query;
-  const publicUserObj = getSingleUser(firebaseKey).then((user) => user[0]);
+  const publicUserObj = getSingleUser(firebaseKey);
+  const appUserObj = getUser(user.uid);
+  console.warn(appUserObj);
   const [songs, setSongs] = useState([]);
   const getAllTheSongs = () => {
     getSingleUser(firebaseKey).then((publicUser) => {
-      console.warn(publicUser[0].uid);
       getSongs(publicUser[0].uid).then(setSongs);
     });
   };
@@ -36,9 +40,23 @@ export default function Profile() {
   useEffect(() => {
     getAllFollows();
   }, []);
+  const followUser = () => {
+    const payload = {
+      uid: appUserObj.uid,
+      follower_id: appUserObj.firebaseKey,
+      receiver_id: publicUserObj.firebaseKey,
+    };
+    createFollow(payload).then(({ name }) => {
+      const patchPayload = { firebaseKey: name };
+      updateFollow(patchPayload);
+    });
+  };
 
   return (
     <div>
+      <div>
+        <Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>
+      </div>
       <div>
         <h3>songs</h3>
         <div id="songcardcontainer">
