@@ -54,20 +54,15 @@ const getUser = (uid) => new Promise((resolve, reject) => {
 
 // GET SINGLE USER (for app use)
 const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/users.json?orderBy="firebaseKey"&equalTo="${firebaseKey}"`, {
+  fetch(`${dbUrl}/users/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    }).catch(reject);
+    .then((data) => resolve(data))
+    .catch(reject);
 });
 
 // DELETE SINGLE USER
