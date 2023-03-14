@@ -24,7 +24,6 @@ export default function Profile() {
           .then(setFollows);
       });
     });
-    console.warn(setFollows);
   };
   useEffect(() => {
     getAllFollows();
