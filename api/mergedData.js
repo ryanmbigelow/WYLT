@@ -38,7 +38,6 @@ const deleteUserSongsRelationship = (firebaseKey) => new Promise((resolve, rejec
 // GET USERS BY USER FOLLOWS
 const getUserFollows = (firebaseKey) => new Promise((resolve, reject) => {
   getFollows(firebaseKey).then((followArr) => {
-    console.warn(followArr);
     const userFollowsArray = followArr.map((follow) => getSingleUser(follow.receiver_id));
     Promise.all(userFollowsArray).then(resolve);
   }).catch(reject);

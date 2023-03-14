@@ -14,7 +14,6 @@ export default function NavBar() {
   useEffect(() => {
     getUserFirebaseKey();
   });
-  console.warn(userFirebaseKey);
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
