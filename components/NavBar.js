@@ -1,9 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
+import { getUser } from '../api/userData';
 
 export default function NavBar() {
+  const { user } = useAuth();
+  const [userFirebaseKey, setUserFirebaseKey] = useState('');
+  const getUserFirebaseKey = () => {
+    getUser(user.uid).then((appUser) => appUser[0].firebaseKey).then(setUserFirebaseKey);
+  };
+  useEffect(() => {
+    getUserFirebaseKey();
+  });
+  console.warn(userFirebaseKey);
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
@@ -26,7 +38,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link passHref href="/profile">
+              <Link passHref href={`/user/${userFirebaseKey}`}>
                 <a className="nav-link">
                   Profile
                 </a>

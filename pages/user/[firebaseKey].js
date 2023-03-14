@@ -10,49 +10,49 @@ import SongCard from '../../components/cards/SongCard';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function Profile() {
+  // GET THE FIREBASEKEY TO VIEW A USER'S PROFILE
   const { user } = useAuth();
   const router = useRouter();
   const { firebaseKey } = router.query;
-  const publicUserObj = () => getSingleUser(firebaseKey);
-  // const appUserObj = () => getUser(user.uid).then((appUser) => appUser[0]);
-  // useEffect(() => {
-  //   publicUserObj();
-  //   appUserObj();
-  // });
+  const { profileOwner, setProfileOwner } = useState({});
+  const getProfileOwner = () => {
+    getSingleUser(firebaseKey).then(setProfileOwner);
+  };
+  useEffect(() => {
+    getProfileOwner();
+  });
+  const { profileViewer, setProfileViewer } = useState({});
+  const getProfileViewer = () => {
+    getUser(user.uid).then(setProfileViewer);
+  };
+  useEffect(() => {
+    getProfileViewer();
+  });
+
+  // GET ALL THE USER'S UPLOADED SONGS
   const [songs, setSongs] = useState([]);
   const getAllTheSongs = () => {
-    getSingleUser(firebaseKey).then((publicUser) => {
-      getSongs(publicUser.uid).then(setSongs);
-    });
+    // getSingleUser(firebaseKey).then((publicUser) => {
+    getSongs(profileOwner.uid).then(setSongs);
+    // });
   };
   useEffect(() => {
     getAllTheSongs();
   }, []);
 
+  // GET ALL THE OTHER USERS THE USER FOLLOWS
   const [follows, setFollows] = useState([]);
   const getAllFollows = () => {
-    // getSingleUser(firebaseKey).then((publicUser) => {
     getUserFollows(firebaseKey).then(setFollows);
-    //   (followArr) => {
-    //   followArr.forEach((follow) => {
-    //     getSingleUser(follow.receiver_id)
-    //       .then(setFollows);
-    //   });
-    // });
-    // });
   };
   useEffect(() => {
     getAllFollows();
   }, []);
-  const getFollowerAndReceiver = () => new Promise((resolve, reject) => {
-    Promise.all([getSingleUser(firebaseKey), getUser(user.uid)]).then(([receiverUser, followerUser]) => {
-      resolve({ ...receiverUser, ...followerUser });
-    }).catch(reject);
-  });
+
+  // CLICK EVENT FOR FOLLOWING A USER
   const followUser = () => {
-    getFollowerAndReceiver().then((users) => users[0]);
     const payload = {
-      // follower_id: followerUser.firebaseKey,
+      follower_id: firebaseKey,
       receiver_id: firebaseKey,
     };
     createFollow(payload).then(({ name }) => {
@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <div>
       <div>
-        <Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>
+        {profileOwner === profileViewer ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
       </div>
       <div>
         <h3>songs</h3>
@@ -76,7 +76,7 @@ export default function Profile() {
         <h3>follows</h3>
         <div>
           {follows.map((follow) => (
-            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={publicUserObj} />
+            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
           ))}
         </div>
       </div>
