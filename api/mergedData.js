@@ -1,9 +1,8 @@
-import { deleteSingleCollectionSong } from './collectionSongData';
-import { deleteSingleSong } from './songData';
+import { deleteSingleSong, getSongs } from './songData';
 import {
   deleteSingleUser, getSingleUser, getUserCollectionSongs, getUserSongs,
 } from './userData';
-import { getFollows } from './followData';
+import { deleteSingleFollow, getFollows } from './followData';
 
 // GET A USER AND THEIR SONGS
 const getUserSongsRelationship = (firebaseKey) => new Promise((resolve, reject) => {
@@ -19,16 +18,16 @@ const getUserCollectionSongsRelationship = (firebaseKey) => new Promise((resolve
   }).catch(reject);
 });
 
-// DELETE USER, SONGS, AND COLLECTION SONGS
+// DELETE USER, SONGS, AND FOLLOWS
 const deleteUserSongsRelationship = (firebaseKey) => new Promise((resolve, reject) => {
-  getUserSongs(firebaseKey).then((userSongsArray) => {
+  getSongs(firebaseKey).then((userSongsArray) => {
     const deleteSongPromises = userSongsArray.map((song) => deleteSingleSong(song.firebaseKey));
     Promise.all(deleteSongPromises);
   }).then(
-    getUserCollectionSongs(firebaseKey).then((userCollectionSongsArray) => {
-      const deleteCollectionSongPromises = userCollectionSongsArray.map((song) => deleteSingleCollectionSong(song.firebaseKey));
+    getFollows(firebaseKey).then((userFollowsArray) => {
+      const deleteUserFollowsPromises = userFollowsArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
 
-      Promise.all(deleteCollectionSongPromises).then(() => {
+      Promise.all(deleteUserFollowsPromises).then(() => {
         deleteSingleUser(firebaseKey).then(resolve);
       });
     }),

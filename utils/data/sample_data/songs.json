@@ -3,70 +3,70 @@
     "artist": "Caetano Veloso",
     "firebaseKey": "-NP8R9K92DIIVx-UN3ML",
     "title": "Nine Out of Ten",
-    "uid": "V7XPlbYqiSh5Eco9odMfTUJirPi2",
+    "user_id": "-NPhDIh_17p8o24jfZHj",
     "youtube_link": "https://www.youtube.com/embed/8iZB87WLdhc"
   },
   "-NP8R9KCDXsYi6b_6phb": {
     "artist": "Stereolab",
     "firebaseKey": "-NP8R9KCDXsYi6b_6phb",
     "title": "Rainbo Conversation",
-    "uid": "V7XPlbYqiSh5Eco9odMfTUJirPi2",
+    "user_id": "-NPhDIh_17p8o24jfZHj",
     "youtube_link": "https://www.youtube.com/embed/miX13WiBVbo"
   },
   "-NP8R9KFII9Jv7QD0gEm": {
     "artist": "Duster",
     "firebaseKey": "-NP8R9KFII9Jv7QD0gEm",
     "title": "Reed to Hillsborough",
-    "uid": "V7XPlbYqiSh5Eco9odMfTUJirPi2",
+    "user_id": "-NPhDIh_17p8o24jfZHj",
     "youtube_link": "https://www.youtube.com/embed/bvl7Tl1x5sw"
   },
   "-NP8R9KIKOVNxupXjkyT": {
     "artist": "Gil Scott-Heron",
     "firebaseKey": "-NP8R9KIKOVNxupXjkyT",
     "title": "Lady Day and John Coltrane",
-    "uid": "V7XPlbYqiSh5Eco9odMfTUJirPi2",
+    "user_id": "-NPhDIh_17p8o24jfZHj",
     "youtube_link": "https://www.youtube.com/embed/GUtqNk3fqm4"
   },
   "-NP8R9KOsqJgeaz7ISK1": {
     "artist": "Fela Kuti",
     "firebaseKey": "-NP8R9KOsqJgeaz7ISK1",
     "title": "Gentleman",
-    "uid": "V7XPlbYqiSh5Eco9odMfTUJirPi2",
+    "user_id": "-NPhDIh_17p8o24jfZHj",
     "youtube_link": "https://youtu.be/snIV_-IECsM"
   },
   "-NP8R9KRhfOXkNTr_rXT": {
     "artist": "Cypress Hill",
     "firebaseKey": "-NP8R9KRhfOXkNTr_rXT",
     "title": "I Ain't Goin' Out Like That",
-    "uid": "81oaCaQpKPPVDbbwH8f6FSE9dPD3",
+    "user_id": "-NPhGoMLDNDLOUoRDnvs",
     "youtube_link": "https://www.youtube.com/embed/q7p-ihYOG5s"
   },
   "-NP8R9KUr-NgTzEmJ-LM": {
     "artist": "Ms. Lauryn Hill",
     "firebaseKey": "-NP8R9KUr-NgTzEmJ-LM",
     "title": "Ex-Factor",
-    "uid": "81oaCaQpKPPVDbbwH8f6FSE9dPD3",
+    "user_id": "-NPhGoMLDNDLOUoRDnvs",
     "youtube_link": "https://www.youtube.com/embed/cE-bnWqLqxE"
   },
   "-NP8R9KWmjdz8_cG8A-h": {
     "artist": "Bad Bunny",
     "firebaseKey": "-NP8R9KWmjdz8_cG8A-h",
     "title": "Yo Perreo Sola",
-    "uid": "81oaCaQpKPPVDbbwH8f6FSE9dPD3",
+    "user_id": "-NPhGoMLDNDLOUoRDnvs",
     "youtube_link": "https://www.youtube.com/embed/GtSRKwDCaZM"
   },
   "-NP8R9KZZPuaVVXkR6zB": {
     "artist": "LCD Soundsystem",
     "firebaseKey": "-NP8R9KZZPuaVVXkR6zB",
     "title": "All My Friends",
-    "uid": "81oaCaQpKPPVDbbwH8f6FSE9dPD3",
+    "user_id": "-NPhGoMLDNDLOUoRDnvs",
     "youtube_link": "https://www.youtube.com/embed/aygY5OqMuKE"
   },
   "-NPhwiJS1WU15WhkQe1v": {
     "artist": "Harmonia",
     "firebaseKey": "-NPhwiJS1WU15WhkQe1v",
     "title": "Watussi",
-    "uid": "81oaCaQpKPPVDbbwH8f6FSE9dPD3",
+    "user_id": "-NPhGoMLDNDLOUoRDnvs",
     "youtube_link": "https://www.youtube.com/embed/4kVr8_c-HJY"
   }
 }
