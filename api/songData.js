@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const dbUrl = clientCredentials.databaseURL;
 
 // GET ALL SONGS
-const getSongs = (uid) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/songs.json?orderBy="uid"&equalTo="${uid}"`, {
+const getSongs = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/songs.json?orderBy="user_id"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

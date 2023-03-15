@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import {
   createFollow, deleteSingleFollow, getFollows, updateFollow,
 } from '../../api/followData';
-import { getUserFollows } from '../../api/mergedData';
+import { deleteUserSongsRelationship, getUserFollows } from '../../api/mergedData';
 import { getSongs } from '../../api/songData';
 import { getSingleUser, getUsers } from '../../api/userData';
 import FriendCard from '../../components/cards/FriendCard';
@@ -41,7 +41,7 @@ export default function Profile() {
   // GET ALL THE USER'S UPLOADED SONGS
   const [songs, setSongs] = useState([]);
   const getAllTheSongs = () => {
-    getSongs(profileOwner.uid).then(setSongs);
+    getSongs(profileOwner.firebaseKey).then(setSongs);
   };
   useEffect(() => {
     getAllTheSongs();
@@ -88,6 +88,13 @@ export default function Profile() {
     });
   };
 
+  // CLICK EVENT FOR DELETING A USER
+  const deleteUserAndUserData = () => {
+    if (window.confirm('Are you sure you want to delete your account? This action is irreversible.')) {
+      deleteUserSongsRelationship(profileOwner.firebaseKey);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -108,6 +115,7 @@ export default function Profile() {
           ))}
         </div>
       </div>
+      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={deleteUserAndUserData}>Delete Account</Button>) : ''}
     </div>
   );
 }
