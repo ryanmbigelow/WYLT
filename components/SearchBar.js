@@ -18,7 +18,7 @@ export default function SearchBar() {
   return (
     <div>
       <Form onSubmit={handleSubmit} id="searchBar">
-        <input className="form-control" type="text" placeholder="Search your pins" onChange={handleChange} value={searchInput} style={{ width: '300px', height: '40px' }} />
+        <input className="form-control" type="text" placeholder="search users and songs" onChange={handleChange} value={searchInput} style={{ width: '300px', height: '40px' }} />
       </Form>
     </div>
   );

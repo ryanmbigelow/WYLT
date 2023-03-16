@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import { getUser } from '../api/userData';
@@ -26,7 +27,6 @@ export default function NavBar() {
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
-
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
@@ -46,6 +46,7 @@ export default function NavBar() {
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>
+            <SearchBar />
           </ul>
         </div>
       </div>
