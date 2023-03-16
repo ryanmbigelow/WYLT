@@ -47,6 +47,7 @@ const getFollowsSongs = (firebaseKey) => new Promise((resolve, reject) => {
   getUserFollows(firebaseKey).then((followArr) => {
     const followsArray = followArr.map((follow) => getSongs(follow.firebaseKey));
     Promise.all(followsArray);
+    console.warn(followsArray);
     followsArray.forEach((song) => resolve(song));
   }).catch(reject);
 });
