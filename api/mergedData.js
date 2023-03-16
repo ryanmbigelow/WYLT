@@ -42,6 +42,15 @@ const getUserFollows = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
+// GET ALL SONGS FROM USER FOLLOWS
+const getFollowsSongs = (firebaseKey) => new Promise((resolve, reject) => {
+  getUserFollows(firebaseKey).then((followArr) => {
+    const followsArray = followArr.map((follow) => getSongs(follow.firebaseKey));
+    Promise.all(followsArray);
+    followsArray.forEach((song) => resolve(song));
+  }).catch(reject);
+});
+
 export {
-  getUserSongsRelationship, getUserCollectionSongsRelationship, deleteUserSongsRelationship, getUserFollows,
+  getUserSongsRelationship, getUserCollectionSongsRelationship, deleteUserSongsRelationship, getUserFollows, getFollowsSongs,
 };
