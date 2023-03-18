@@ -2,9 +2,28 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-// GET ALL SONGS
+// GET A USERS' SONGS
 const getSongs = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/songs.json?orderBy="user_id"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
+// GET ALL SONGS
+const getAllSongs = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/songs.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -75,6 +94,7 @@ const updateSong = (payload) => new Promise((resolve, reject) => {
 
 export {
   getSongs,
+  getAllSongs,
   getSingleSong,
   deleteSingleSong,
   updateSong,
