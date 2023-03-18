@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { createSong, updateSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
+import { getUsers } from '../../api/userData';
 
 const initialStateSong = {
   artist: '',
@@ -18,6 +19,18 @@ export default function SongForm({ songObj }) {
   const [formInput, setFormInput] = useState(initialStateSong);
   const router = useRouter();
   const { user } = useAuth();
+
+  // FUNCTION TO GET THE APP USER OBJECT
+  const [appUser, setAppUser] = useState({});
+  const getAppUser = () => {
+    getUsers().then((userArr) => {
+      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      setAppUser(appUserObj);
+    });
+  };
+  useEffect(() => {
+    getAppUser();
+  }, [user]);
 
   useEffect(() => {
     if (songObj.firebaseKey) setFormInput(songObj);
@@ -34,13 +47,13 @@ export default function SongForm({ songObj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (songObj.firebaseKey) {
-      updateSong(formInput).then(() => router.push('/'));
+      updateSong(formInput).then(() => router.push(`/user/${appUser.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, user_id: appUser.firebaseKey };
       createSong(payload).then(({ name }) => {
         const patchPayloadFBK = { firebaseKey: name };
         updateSong(patchPayloadFBK).then(() => {
-          router.push('/');
+          router.push(`/user/${appUser.firebaseKey}`);
         });
       });
     }
