@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
@@ -115,6 +116,11 @@ export default function Profile() {
           ))}
         </div>
       </div>
+      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (
+        <Link href={`/user/edit/${profileOwner.firebaseKey}`} passHref>
+          <Button variant="outline-dark" className="m-2">edit profile</Button>
+        </Link>
+      ) : ''}
       {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={deleteUserAndUserData}>Delete Account</Button>) : ''}
     </div>
   );
