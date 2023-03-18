@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteSingleSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
+import { getUsers } from '../../api/userData';
 
 export default function SongCard({ songObj, onUpdate }) {
+  // FUNCTION TO GET THE APP USER OBJECT
   const { user } = useAuth();
+  const [appUser, setAppUser] = useState({});
+  const getAppUser = () => {
+    getUsers().then((userArr) => {
+      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      setAppUser(appUserObj);
+    });
+  };
+  useEffect(() => {
+    getAppUser();
+  }, [user]);
 
   const deleteSong = () => {
     if (window.confirm(`Delete ${songObj.title} by ${songObj.artist} from your collection?`)) {
@@ -24,10 +36,10 @@ export default function SongCard({ songObj, onUpdate }) {
           <Button variant="outline-dark" className="m-2">VIEW</Button>
         </Link>
         <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
-          {songObj.uid === user.uid ? (<Button variant="outline-dark" className="m-2">EDIT</Button>) : '' }
+          {songObj.user_id === appUser.firebaseKey ? (<Button variant="outline-dark" className="m-2">EDIT</Button>) : '' }
         </Link>
         <>
-          {songObj.uid === user.uid ? (
+          {songObj.user_id === appUser.firebaseKey ? (
             <Button variant="outline-dark" className="m-2" onClick={deleteSong}>
               DELETE
             </Button>
@@ -45,7 +57,7 @@ SongCard.propTypes = {
     youtube_link: PropTypes.string,
     title: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
+    user_id: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
