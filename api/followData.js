@@ -2,9 +2,22 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-// GET USERS FOLLOWS
+// GET USER'S FOLLOWS
 const getFollows = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/follows.json?orderBy="follower_id"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+// GET USER'S RECEIVED FOLLOWS
+const getFollowsReceived = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/follows.json?orderBy="receiver_id"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -69,6 +82,7 @@ const updateFollow = (payload) => new Promise((resolve, reject) => {
 
 export {
   getFollows,
+  getFollowsReceived,
   getSingleFollow,
   deleteSingleFollow,
   updateFollow,

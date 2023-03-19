@@ -1,20 +1,29 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
 import { signOut } from '../utils/auth';
+import { getUsers } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
-import { getUser } from '../api/userData';
 
-export default function NavBar() {
-  const { user } = useAuth();
-  const [userFirebaseKey, setUserFirebaseKey] = useState('');
-  const getUserFirebaseKey = () => {
-    getUser(user.uid).then((appUser) => appUser[0].firebaseKey).then(setUserFirebaseKey);
+export default function NavBar({ user }) {
+  // FUNCTION TO GET THE APP USER OBJECT
+  console.warn(user);
+  const { uid } = useAuth();
+  const [appUser, setAppUser] = useState({});
+  const getAppUser = () => {
+    if (user) {
+      getUsers().then((userArr) => {
+        const appUserObj = userArr.find((userObj) => userObj.uid === uid);
+        setAppUser(appUserObj);
+        console.warn(appUserObj);
+      });
+    }
   };
   useEffect(() => {
-    getUserFirebaseKey();
-  });
+    getAppUser();
+  }, [user]);
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -37,7 +46,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link passHref href={`/user/${userFirebaseKey}`}>
+              <Link passHref href={`/user/${appUser.firebaseKey}`}>
                 <a className="nav-link">
                   Profile
                 </a>
@@ -53,3 +62,7 @@ export default function NavBar() {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  user: PropTypes.shape,
+}.isRequired;

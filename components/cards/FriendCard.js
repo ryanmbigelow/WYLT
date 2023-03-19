@@ -1,18 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { deleteSingleFollow } from '../../api/followData';
-import { useAuth } from '../../utils/context/authContext';
+import {
+  createFollow, deleteSingleFollow, getFollows, updateFollow,
+} from '../../api/followData';
 
 export default function FriendCard({ friendObj, onUpdate, appUser }) {
-  const { user } = useAuth();
+  // CHECK IF PROFILE VIEWER FOLLOWS PROFILE OWNER
+  const [userRelationship, setUserRelationship] = useState(false);
+  const getUserRelationship = () => {
+    getFollows(appUser.firebaseKey).then((followRelationships) => {
+      const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === friendObj.firebaseKey && relationship.follower_id === appUser.firebaseKey);
+      if (userFollowRelationship) setUserRelationship(true);
+    });
+  };
+  useEffect(() => {
+    getUserRelationship();
+  }, [appUser, friendObj]);
 
-  const deleteThisFriend = () => {
-    if (window.confirm(`Unfollow ${friendObj.username}?`)) {
-      deleteSingleFollow(friendObj.firebaseKey).then(() => onUpdate());
-    }
+  // CLICK EVENT FOR FOLLOWING A USER
+  const followUser = () => {
+    const payload = {
+      follower_id: appUser.firebaseKey,
+      receiver_id: friendObj.firebaseKey,
+    };
+    createFollow(payload).then(({ name }) => {
+      const patchPayload = { firebaseKey: name };
+      updateFollow(patchPayload).then(() => onUpdate());
+    });
+  };
+
+  // CLICK EVENT FOR UNFOLLOWING A USER
+  const unfollowUser = () => {
+    getFollows(appUser.firebaseKey).then((followRelationships) => {
+      const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === friendObj.firebaseKey && relationship.follower_id === appUser.firebaseKey);
+      deleteSingleFollow(userFollowRelationship.firebaseKey).then(() => onUpdate());
+    });
   };
 
   return (
@@ -22,15 +47,11 @@ export default function FriendCard({ friendObj, onUpdate, appUser }) {
         <Card.Body>
           <Card.Title>{friendObj.username}</Card.Title>
           <Link href={`/user/${friendObj.firebaseKey}`} passHref>
-            {appUser.uid === user.uid ? (<Button variant="outline-dark" className="m-2">view profile</Button>) : '' }
+            {appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2">view profile</Button>) : '' }
           </Link>
           <>
-            {appUser.uid === user.uid ? (
-              <Button variant="outline-dark" className="m-2" onClick={deleteThisFriend}>
-                DELETE
-              </Button>
-            )
-              : ''}
+            {userRelationship === true && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>Unfollow</Button>) : ''}
+            {userRelationship === false && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
           </>
         </Card.Body>
       </Card>
@@ -47,6 +68,6 @@ FriendCard.propTypes = {
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
   appUser: PropTypes.shape({
-    uid: PropTypes.string,
+    firebaseKey: PropTypes.string,
   }).isRequired,
 };

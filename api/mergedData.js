@@ -2,7 +2,7 @@ import { deleteSingleSong, getSongs } from './songData';
 import {
   deleteSingleUser, getSingleUser, getUserCollectionSongs, getUserSongs,
 } from './userData';
-import { deleteSingleFollow, getFollows } from './followData';
+import { deleteSingleFollow, getFollows, getFollowsReceived } from './followData';
 
 // GET A USER AND THEIR SONGS
 const getUserSongsRelationship = (firebaseKey) => new Promise((resolve, reject) => {
@@ -26,11 +26,15 @@ const deleteUserSongsRelationship = (firebaseKey) => new Promise((resolve, rejec
   }).then(
     getFollows(firebaseKey).then((userFollowsArray) => {
       const deleteUserFollowsPromises = userFollowsArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
-
-      Promise.all(deleteUserFollowsPromises).then(() => {
-        deleteSingleUser(firebaseKey).then(resolve);
-      });
-    }),
+      Promise.all(deleteUserFollowsPromises);
+    }).then(
+      getFollowsReceived(firebaseKey).then((followsReceivedArray) => {
+        const deleteFollowsReceivedPromises = followsReceivedArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
+        Promise.all(deleteFollowsReceivedPromises).then(() => {
+          deleteSingleUser(firebaseKey).then(resolve);
+        });
+      }),
+    ),
   ).catch(reject);
 });
 
