@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { createUser, getUser, updateUser } from '../../api/userData';
 import { useAuth } from '../../utils/context/authContext';
+import { signOut } from '../../utils/auth';
 
 const initialStateUser = {
   username: '',
@@ -89,6 +90,9 @@ export default function UserForm({ obj }) {
           />
         </FloatingLabel>
         <Button type="submit" variant="outline-dark" className="m-2 text-color-drkblu">{obj.firebaseKey ? 'Update' : 'Create'}</Button>
+        <button type="button" className="btn btn-danger" onClick={signOut}>
+          Sign Out
+        </button>
       </Form>
     </div>
   );

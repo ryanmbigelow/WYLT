@@ -14,7 +14,7 @@ import { useAuth } from '../../utils/context/authContext';
 
 export default function Profile() {
   // GET THE FIREBASEKEY TO VIEW A USER'S PROFILE
-  const { user } = useAuth();
+  const { user, uid } = useAuth();
   const router = useRouter();
   const { firebaseKey } = router.query;
 
@@ -31,7 +31,7 @@ export default function Profile() {
   const [profileViewer, setProfileViewer] = useState({});
   const getProfileViewer = () => {
     getUsers().then((userArr) => {
-      const appUser = userArr.find((userObj) => userObj.uid === user.uid);
+      const appUser = userArr.find((userObj) => userObj.uid === uid);
       setProfileViewer(appUser);
     });
   };
