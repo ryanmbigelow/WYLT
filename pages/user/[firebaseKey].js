@@ -14,7 +14,7 @@ import { useAuth } from '../../utils/context/authContext';
 
 export default function Profile() {
   // GET THE FIREBASEKEY TO VIEW A USER'S PROFILE
-  const { user, uid } = useAuth();
+  const { uid } = useAuth();
   const router = useRouter();
   const { firebaseKey } = router.query;
 
@@ -37,7 +37,7 @@ export default function Profile() {
   };
   useEffect(() => {
     getProfileViewer();
-  }, [user]);
+  }, [uid]);
 
   // GET ALL THE USER'S UPLOADED SONGS
   const [songs, setSongs] = useState([]);
@@ -63,6 +63,7 @@ export default function Profile() {
     getFollows(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === profileOwner.firebaseKey && relationship.follower_id === profileViewer.firebaseKey);
       if (userFollowRelationship) setUserRelationship(true);
+      else setUserRelationship(false);
     });
   };
   useEffect(() => {
@@ -77,7 +78,7 @@ export default function Profile() {
     };
     createFollow(payload).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
-      updateFollow(patchPayload);
+      updateFollow(patchPayload).then(getUserRelationship);
     });
   };
 
@@ -86,7 +87,7 @@ export default function Profile() {
     getFollows(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === profileOwner.firebaseKey && relationship.follower_id === profileViewer.firebaseKey);
       deleteSingleFollow(userFollowRelationship.firebaseKey);
-    });
+    }).then(getUserRelationship);
   };
 
   // CLICK EVENT FOR DELETING A USER
@@ -112,7 +113,7 @@ export default function Profile() {
         <h3>follows</h3>
         <div>
           {follows.map((follow) => (
-            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
+            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} onUpdate2={getAllFollows} appUser={profileOwner} />
           ))}
         </div>
       </div>

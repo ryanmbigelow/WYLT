@@ -7,13 +7,16 @@ import {
   createFollow, deleteSingleFollow, getFollows, updateFollow,
 } from '../../api/followData';
 
-export default function FriendCard({ friendObj, onUpdate, appUser }) {
+export default function FriendCard({
+  friendObj, onUpdate, appUser,
+}) {
   // CHECK IF PROFILE VIEWER FOLLOWS PROFILE OWNER
   const [userRelationship, setUserRelationship] = useState(false);
   const getUserRelationship = () => {
     getFollows(appUser.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === friendObj.firebaseKey && relationship.follower_id === appUser.firebaseKey);
       if (userFollowRelationship) setUserRelationship(true);
+      else setUserRelationship(false);
     });
   };
   useEffect(() => {
@@ -36,7 +39,7 @@ export default function FriendCard({ friendObj, onUpdate, appUser }) {
   const unfollowUser = () => {
     getFollows(appUser.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiver_id === friendObj.firebaseKey && relationship.follower_id === appUser.firebaseKey);
-      deleteSingleFollow(userFollowRelationship.firebaseKey).then(() => onUpdate());
+      deleteSingleFollow(userFollowRelationship.firebaseKey).then(getUserRelationship);
     });
   };
 
