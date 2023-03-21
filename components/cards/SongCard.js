@@ -9,17 +9,17 @@ import { getUsers } from '../../api/userData';
 
 export default function SongCard({ songObj, onUpdate }) {
   // FUNCTION TO GET THE APP USER OBJECT
-  const { user } = useAuth();
+  const { uid } = useAuth();
   const [appUser, setAppUser] = useState({});
   const getAppUser = () => {
     getUsers().then((userArr) => {
-      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      const appUserObj = userArr.find((userObj) => userObj.uid === uid);
       setAppUser(appUserObj);
     });
   };
   useEffect(() => {
     getAppUser();
-  }, [user]);
+  }, [uid]);
 
   const deleteSong = () => {
     if (window.confirm(`Delete ${songObj.title} by ${songObj.artist} from your collection?`)) {

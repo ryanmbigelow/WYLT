@@ -9,17 +9,17 @@ import { useAuth } from '../../utils/context/authContext';
 
 export default function SearchResult() {
   // FUNCTION TO GET THE APP USER OBJECT
-  const { user } = useAuth();
+  const { uid } = useAuth();
   const [appUser, setAppUser] = useState({});
   const getAppUser = () => {
     getUsers().then((userArr) => {
-      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      const appUserObj = userArr.find((userObj) => userObj.uid === uid);
       setAppUser(appUserObj);
     });
   };
   useEffect(() => {
     getAppUser();
-  }, [user]);
+  }, [uid]);
 
   const [searchSongResults, setSearchSongResults] = useState([]);
   const [searchUserResults, setSearchUserResults] = useState([]);
