@@ -66,7 +66,7 @@ export default function SearchResult() {
           <SongCard key={obj.firebaseKey} songObj={obj} onUpdate={getSearchSongResults} />
         ))}
       </div>
-      <div className="d-flex flex-wrap">
+      <div className="friendcardcontainer">
         {searchUserResults.map((obj) => (
           <FriendCard key={obj.firebaseKey} friendObj={obj} onUpdate={getSearchUserResults} appUser={appUser} />
         ))}

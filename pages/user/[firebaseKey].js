@@ -111,7 +111,7 @@ export default function Profile() {
           ))}
         </div>
         <h3>follows</h3>
-        <div>
+        <div className="friendcardcontainer">
           {follows.map((follow) => (
             <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} onUpdate2={getAllFollows} appUser={profileOwner} />
           ))}

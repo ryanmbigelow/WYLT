@@ -44,20 +44,20 @@ export default function FriendCard({
   };
 
   return (
-    <div>
-      <Card>
-        <iframe src={friendObj.profile_picture} title={friendObj.username} />
-        <Card.Body>
-          <Card.Title>{friendObj.username}</Card.Title>
+    <div className="friendcard">
+      <img src={friendObj.profile_picture} title={friendObj.username} alt={friendObj} style={{ width: '252px', height: '252px' }} className="border-radius-image" />
+      <Card.Body>
+        <h5 className="friendcardbodytext"><a href={`/user/${friendObj.firebaseKey}`}>@{friendObj.username}</a></h5>
+        <div className="cardbuttonsflexwrap">
           <Link href={`/user/${friendObj.firebaseKey}`} passHref>
-            {appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2">view profile</Button>) : '' }
+            {appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2">profile</Button>) : '' }
           </Link>
           <>
-            {userRelationship === true && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>Unfollow</Button>) : ''}
-            {userRelationship === false && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
+            {userRelationship === true && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>unfollow</Button>) : ''}
+            {userRelationship === false && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>follow</Button>) : ''}
           </>
-        </Card.Body>
-      </Card>
+        </div>
+      </Card.Body>
     </div>
   );
 }

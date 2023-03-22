@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { deleteSingleSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
 import { getUsers } from '../../api/userData';
@@ -29,17 +30,17 @@ export default function SongCard({ songObj, onUpdate }) {
     <div className="songcard">
       <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '252px', height: '189px' }} />
       <div>
-        <div className="cardbodytext">
+        <div className="songcardbodytext">
           <h5>{songObj.title}</h5>
           <h6>{songObj.artist}</h6>
           <h6>uploaded by {songObj.artist}</h6>
         </div>
         <div className="cardbuttonsflexwrap">
           <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
-            {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="cardbuttons">edit</button>) : '' }
+            {songObj.user_id === appUser.firebaseKey ? (<Button type="button" className="m-2">edit</Button>) : '' }
           </Link>
           <>
-            {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="cardbuttons" onClick={deleteSong}>delete</button>) : ''}
+            {songObj.user_id === appUser.firebaseKey ? (<Button type="button" className="m-2" onClick={deleteSong}>delete</Button>) : ''}
           </>
         </div>
       </div>

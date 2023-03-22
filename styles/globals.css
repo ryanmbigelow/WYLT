@@ -38,7 +38,7 @@ body {
   margin-left: 2.75%;
 }
 
-#navbarprofile {
+.border-radius-image {
   border-radius: 50%;
 }
 
@@ -56,7 +56,7 @@ body {
   align-items: center;
 }
 
-.cardbodytext {
+.songcardbodytext {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -72,7 +72,54 @@ body {
   margin: 1%;
 }
 
+/* Friend Cards */
+
+.friendcard {
+  border: 1px solid #161925;
+  padding: 1%;
+  border-radius: 1%;
+  background-color: #ACACDE;
+  margin: 1%;
+}
+
+.friendcardcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.friendcardbodytext {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5%;
+}
+
 /* Card Buttons */
+
+.m-2 {
+  background-color: #FFB86F;
+  width: 40%;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-2:hover {
+  background-color: #fbcd9f;
+  width: 40%;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-2:active {
+  background-color: #ff8000;
+  width: 40%;
+  border: 1px solid #161925;
+  color: #161925;
+}
 
 .cardbuttonsflexwrap {
   display: flex;
@@ -80,22 +127,4 @@ body {
   align-items: center;
   border-top: 1px solid #161925;
   padding-top: 3%;
-}
-
-.cardbuttons {
-  width: 40%;
-  background-color: #FFB86F;
-  border: 1px solid #161925;
-}
-
-.cardbuttons:hover {
-  width: 42%;
-  background-color: #fbcd9f;
-  border: 1px solid #161925;
-}
-
-.cardbuttons:active {
-  width: 38%;
-  background-color: #ff8000;
-  border: 1px solid #161925;
 }

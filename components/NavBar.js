@@ -49,7 +49,7 @@ export default function NavBar({ user }) {
           </Nav>
           <SearchBar className="d-flex" />
           <Nav.Link href={`/user/${appUser.firebaseKey}`}>
-            <img src={appUser.profile_picture} alt="userURL" width="50px" height="50px" id="navbarprofile" />
+            <img src={appUser.profile_picture} alt="userURL" width="50px" height="50px" className="border-radius-image" />
           </Nav.Link>
         </Navbar.Collapse>
       </Container>
