@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteSingleSong } from '../../api/songData';
@@ -28,21 +27,23 @@ export default function SongCard({ songObj, onUpdate }) {
   };
 
   return (
-    <Card>
-      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: 420, height: 315 }} />
+    <Card style={{ width: '18rem' }}>
+      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '16rem' }} />
       <Card.Body>
-        <Card.Title>{songObj.title} by {songObj.artist}</Card.Title>
-        <Link href={`/song/${songObj.firebaseKey}`} passHref>
+        <Card.Title>{songObj.title}</Card.Title>
+        <Card.Text>{songObj.artist}</Card.Text>
+        <Card.Text>uploaded by {songObj.artist}</Card.Text>
+        {/* <Link href={`${songObj.youtube_link}`} passHref>
           <Button variant="outline-dark" className="m-2">VIEW</Button>
-        </Link>
+        </Link> */}
         <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
-          {songObj.user_id === appUser.firebaseKey ? (<Button variant="outline-dark" className="m-2">EDIT</Button>) : '' }
+          {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="m-2">EDIT</button>) : '' }
         </Link>
         <>
           {songObj.user_id === appUser.firebaseKey ? (
-            <Button variant="outline-dark" className="m-2" onClick={deleteSong}>
+            <button type="button" className="m-2" onClick={deleteSong}>
               DELETE
-            </Button>
+            </button>
           )
             : ''}
         </>
