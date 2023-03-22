@@ -78,9 +78,24 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-top: 1px solid #161925;
+  padding-top: 3%;
 }
 
 .cardbuttons {
-  border-radius: 8%;
   width: 40%;
+  background-color: #FFB86F;
+  border: 1px solid #161925;
+}
+
+.cardbuttons:hover {
+  width: 42%;
+  background-color: #fbcd9f;
+  border: 1px solid #161925;
+}
+
+.cardbuttons:active {
+  width: 38%;
+  background-color: #ff8000;
+  border: 1px solid #161925;
 }
