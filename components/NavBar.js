@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { NavDropdown } from 'react-bootstrap';
 import SearchBar from './SearchBar';
 import { getUsers } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
@@ -38,6 +39,10 @@ export default function NavBar({ user }) {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
+            <NavDropdown title="Add" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/song/new">add a song</NavDropdown.Item>
+              <NavDropdown.Item href="/board/new">add friends</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <SearchBar className="d-flex" />
           <Nav.Link href={`/user/${appUser.firebaseKey}`}>
