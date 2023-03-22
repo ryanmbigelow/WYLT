@@ -36,11 +36,28 @@ export default function SongForm({ songObj }) {
     if (songObj.firebaseKey) setFormInput(songObj);
   }, [songObj, user]);
 
+  // FUNCTION TO CONVERT THE YOUTUBE LINK TO A YOUTUBE EMBED LINK
+  const convertLink = (payload) => {
+    const [, videoID] = payload.split('watch?v=');
+    const embedLink = `https://www.youtube.com/embed/${String.valueOf(videoID)}`;
+    return embedLink;
+  };
+
+  // EVENT HANDLERS
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  const handleLink = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: convertLink(value),
     }));
   };
 
@@ -106,7 +123,7 @@ export default function SongForm({ songObj }) {
             placeholder="YouTube Embed Link"
             name="youtube_link"
             value={formInput.youtube_link}
-            onChange={handleChange}
+            onChange={handleLink}
             required
           />
         </FloatingLabel>

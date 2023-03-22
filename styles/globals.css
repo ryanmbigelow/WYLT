@@ -25,3 +25,26 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+/* Nav Bar */
+
+#navbar {
+  background-color: #ACACDE;
+  height: 65px;
+}
+
+#searchBar {
+  display: flex;
+  gap: 6.25%;
+  margin-right: 6.25%;
+  margin-left: 2.75%;
+}
+
+#navbarprofile {
+  border-radius: 50%;
+}
+
+#navbar > * {
+  margin-left: 2%;
+  margin-right: 2%;
+}
