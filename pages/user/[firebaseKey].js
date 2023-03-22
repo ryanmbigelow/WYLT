@@ -105,7 +105,7 @@ export default function Profile() {
       </div>
       <div>
         <h3>songs</h3>
-        <div id="songcardcontainer">
+        <div className="songcardcontainer">
           {songs.map((song) => (
             <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
           ))}
