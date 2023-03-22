@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import SearchBar from './SearchBar';
-import { signOut } from '../utils/auth';
 import { getUsers } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -26,40 +27,25 @@ export default function NavBar({ user }) {
   }, [user]);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Link passHref href="/">
-          <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            WYLT
-          </a>
-        </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link passHref href="/">
-                <a className="nav-link">
-                  Home
-                </a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link passHref href={`/user/${appUser.firebaseKey}`}>
-                <a className="nav-link">
-                  Profile
-                </a>
-              </Link>
-            </li>
-            <button type="button" className="btn btn-danger" onClick={signOut}>
-              Sign Out
-            </button>
-            <SearchBar />
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar expand="lg" id="navbar">
+      <Container fluid>
+        {/* <Nav.Link href="/"><Image src={logo} alt="PinTwist Logo" width={100} height={50} /></Nav.Link> */}
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="/">Home</Nav.Link>
+          </Nav>
+          <SearchBar className="d-flex" />
+          <Nav.Link href={`/user/${appUser.firebaseKey}`}>
+            <img src={appUser.profile_picture} alt="userURL" width="50px" height="50px" id="navbarprofile" />
+          </Nav.Link>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
