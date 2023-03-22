@@ -35,14 +35,14 @@ function Home() {
 
   return (
     <div>
-      <h1>Hello {user.displayName}! </h1>
+      <h1>hey {appUser.username}! </h1>
       <div>
         <Link href="/song/new" passHref>
           <Button variant="outline-dark" className="m-2">Add a Song</Button>
         </Link>
       </div>
       <div>
-        <div id="songcardcontainer">
+        <div className="songcardcontainer">
           {songs.map((song) => (
             <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
           ))}

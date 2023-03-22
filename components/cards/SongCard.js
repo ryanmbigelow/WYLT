@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteSingleSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
@@ -27,28 +26,24 @@ export default function SongCard({ songObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '16rem' }} />
-      <Card.Body>
-        <Card.Title>{songObj.title}</Card.Title>
-        <Card.Text>{songObj.artist}</Card.Text>
-        <Card.Text>uploaded by {songObj.artist}</Card.Text>
-        {/* <Link href={`${songObj.youtube_link}`} passHref>
-          <Button variant="outline-dark" className="m-2">VIEW</Button>
-        </Link> */}
-        <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
-          {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="m-2">EDIT</button>) : '' }
-        </Link>
-        <>
-          {songObj.user_id === appUser.firebaseKey ? (
-            <button type="button" className="m-2" onClick={deleteSong}>
-              DELETE
-            </button>
-          )
-            : ''}
-        </>
-      </Card.Body>
-    </Card>
+    <div className="songcard">
+      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '252px', height: '189px' }} />
+      <div>
+        <div className="cardbodytext">
+          <h5>{songObj.title}</h5>
+          <h6>{songObj.artist}</h6>
+          <h6>uploaded by {songObj.artist}</h6>
+        </div>
+        <div className="cardbuttonsflexwrap">
+          <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
+            {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="cardbuttons">edit</button>) : '' }
+          </Link>
+          <>
+            {songObj.user_id === appUser.firebaseKey ? (<button type="button" className="cardbuttons" onClick={deleteSong}>delete</button>) : ''}
+          </>
+        </div>
+      </div>
+    </div>
   );
 }
 

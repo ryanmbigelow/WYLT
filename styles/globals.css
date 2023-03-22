@@ -21,16 +21,14 @@ body {
   background-color: #F6F7EB;
 }
 
-#songcardcontainer {
-  display: flex;
-  flex-direction: row;
-}
-
 /* Nav Bar */
 
 #navbar {
-  background-color: #ACACDE;
+  background-color: #F6F7EB;
   height: 65px;
+  border-bottom: 2px solid #161925;
+  margin-bottom: 3%;
+  padding: 2%;
 }
 
 #searchBar {
@@ -47,4 +45,42 @@ body {
 #navbar > * {
   margin-left: 2%;
   margin-right: 2%;
+}
+
+/* Song Cards */
+
+.songcardcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cardbodytext {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.songcard {
+  border: 1px solid #161925;
+  padding: 1%;
+  border-radius: 1%;
+  background-color: #ACACDE;
+  margin: 1%;
+}
+
+/* Card Buttons */
+
+.cardbuttonsflexwrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cardbuttons {
+  border-radius: 8%;
+  width: 40%;
 }
