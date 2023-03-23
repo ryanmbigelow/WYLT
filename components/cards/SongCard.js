@@ -28,7 +28,7 @@ export default function SongCard({ songObj, onUpdate }) {
 
   return (
     <div className="songcard">
-      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '252px', height: '189px' }} />
+      <iframe src={songObj.youtube_link} title={songObj.title} style={{ width: '252px', height: '189px' }} className="youtubevideo" />
       <div>
         <div className="songcardbodytext">
           <h5>{songObj.title}</h5>

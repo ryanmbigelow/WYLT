@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: 161925;
   text-decoration: none;
 }
 
@@ -19,6 +19,24 @@ a {
 
 body {
   background-color: #F6F7EB;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #161925;
+  text-align: center;
+}
+
+/* Headers and Footers */
+
+.pageheaderflexwrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #161925;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 /* Nav Bar */
@@ -52,7 +70,7 @@ body {
 .songcardcontainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -70,39 +88,13 @@ body {
   border-radius: 1%;
   background-color: #ACACDE;
   margin: 1%;
+  width: 23%;
 }
-
-/* Friend Cards */
-
-.friendcard {
-  border: 1px solid #161925;
-  padding: 1%;
-  border-radius: 1%;
-  background-color: #ACACDE;
-  margin: 1%;
-}
-
-.friendcardcontainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.friendcardbodytext {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5%;
-}
-
-/* Card Buttons */
 
 .m-2 {
   background-color: #FFB86F;
-  width: 40%;
+  width: 101px;
+  height: 38px;
   border: 1px solid #161925;
   color: #161925;
 }
@@ -127,4 +119,101 @@ body {
   align-items: center;
   border-top: 1px solid #161925;
   padding-top: 3%;
+}
+
+/* Friend Cards */
+
+.friendcard {
+  border: 1px solid #161925;
+  padding: 1%;
+  border-radius: 1%;
+  background-color: #ACACDE;
+  margin: 1%;
+  display: flex;
+  width: 30%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.friendcardcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.friendcardprofile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.friendcardbuttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.m-3 {
+  background-color: #FFB86F;
+  height: 25px;
+  border: 1px solid #161925;
+  color: #161925;
+  font-size: .7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-3:hover {
+  background-color: #fbcd9f;
+  height: 25px;
+  border: 1px solid #161925;
+  color: #161925;
+  font-size: .7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.m-3:active {
+  background-color: #ff8000;
+  height: 25px;
+  border: 1px solid #161925;
+  color: #161925;
+  font-size: .7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Big Buttons */
+
+.m-1 {
+  background-color: #FFB86F;
+  width: 20%;
+  padding: 1%;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-1:hover {
+  background-color: #fbcd9f;
+  width: 20%;
+  padding: 1%;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-1:active {
+  background-color: #ff8000;
+  width: 20%;
+  padding: 1%;
+  border: 1px solid #161925;
+  color: #161925;
 }

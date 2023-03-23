@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import {
   createFollow, deleteSingleFollow, getFollows, updateFollow,
@@ -45,19 +44,19 @@ export default function FriendCard({
 
   return (
     <div className="friendcard">
-      <img src={friendObj.profile_picture} title={friendObj.username} alt={friendObj} style={{ width: '252px', height: '252px' }} className="border-radius-image" />
-      <Card.Body>
-        <h5 className="friendcardbodytext"><a href={`/user/${friendObj.firebaseKey}`}>@{friendObj.username}</a></h5>
-        <div className="cardbuttonsflexwrap">
-          <Link href={`/user/${friendObj.firebaseKey}`} passHref>
-            {appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2">profile</Button>) : '' }
-          </Link>
-          <>
-            {userRelationship === true && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>unfollow</Button>) : ''}
-            {userRelationship === false && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>follow</Button>) : ''}
-          </>
+      <div className="friendcardprofile">
+        <img src={friendObj.profile_picture} title={friendObj.username} alt={friendObj} style={{ width: '78px', height: '78px' }} className="border-radius-image" />
+      </div>
+      <div>
+        <h5>@{friendObj.username}</h5>
+      </div>
+      <div className="friendcardbuttons">
+        <div>
+          <Link href={`/user/${friendObj.firebaseKey}`} passHref><Button variant="outline-dark" className="m-3">profile</Button></Link>
+          {userRelationship === true && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-3" onClick={unfollowUser}>unfollow</Button>) : ''}
+          {userRelationship === false && appUser.firebaseKey !== friendObj.firebaseKey ? (<Button variant="outline-dark" className="m-3" onClick={followUser}>follow</Button>) : ''}
         </div>
-      </Card.Body>
+      </div>
     </div>
   );
 }
