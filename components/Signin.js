@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { signIn } from '../utils/auth';
 
 function Signin() {
@@ -14,9 +15,9 @@ function Signin() {
     >
       <h1>Hi there!</h1>
       <p>Click the button below to login!</p>
-      <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
+      <Button type="button" className="m-1" onClick={signIn}>
         Sign In
-      </button>
+      </Button>
     </div>
   );
 }

@@ -12,7 +12,6 @@ import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar({ user }) {
   // FUNCTION TO GET THE APP USER OBJECT
-  console.warn(user);
   const { uid } = useAuth();
   const [appUser, setAppUser] = useState({});
   const getAppUser = () => {
@@ -20,7 +19,6 @@ export default function NavBar({ user }) {
       getUsers().then((userArr) => {
         const appUserObj = userArr.find((userObj) => userObj.uid === uid);
         setAppUser(appUserObj);
-        console.warn(appUserObj);
       });
     }
   };
