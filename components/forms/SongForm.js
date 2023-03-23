@@ -39,7 +39,7 @@ export default function SongForm({ songObj }) {
   // FUNCTION TO CONVERT THE YOUTUBE LINK TO A YOUTUBE EMBED LINK
   const convertLink = (payload) => {
     const [, videoID] = payload.split('watch?v=');
-    const embedLink = `https://www.youtube.com/embed/${String.valueOf(videoID)}`;
+    const embedLink = `https://www.youtube.com/embed/${videoID}`;
     return embedLink;
   };
 
