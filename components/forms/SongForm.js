@@ -12,7 +12,7 @@ const initialStateSong = {
   youtube_link: '',
   title: '',
   firebaseKey: '',
-  uid: '',
+  user_id: '',
 };
 
 export default function SongForm({ songObj }) {
@@ -127,7 +127,7 @@ export default function SongForm({ songObj }) {
             required
           />
         </FloatingLabel>
-        <Button type="submit" variant="outline-dark" className="m-2 text-color-drkblu">{songObj.firebaseKey ? 'Update' : 'Create'}</Button>
+        <Button type="submit" variant="outline-dark" className="m-1 text-color-drkblu">{songObj.firebaseKey ? 'Update' : 'Create'}</Button>
       </Form>
     </div>
   );
@@ -139,7 +139,7 @@ SongForm.propTypes = {
     youtube_link: PropTypes.string,
     title: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
+    user_id: PropTypes.string,
   }),
 };
 

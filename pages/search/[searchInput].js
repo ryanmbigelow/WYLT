@@ -29,19 +29,15 @@ export default function SearchResult() {
 
   const getSearchSongResults = () => {
     getAllSongs().then((searchResultsArray) => {
-      console.warn(searchResultsArray);
       const filterResults = searchResultsArray.filter((songs) => songs.title.toLowerCase().includes(searchInput)
       || songs.artist.toLowerCase().includes(searchInput));
       setSearchSongResults(filterResults);
-      console.warn(filterResults);
     });
   };
   const getSearchUserResults = () => {
     getUsers().then((searchResultsArray) => {
-      console.warn(searchResultsArray);
       const filterResults = searchResultsArray.filter((users) => users.username.toLowerCase().includes(searchInput));
       setSearchUserResults(filterResults);
-      console.warn(filterResults);
     });
   };
 

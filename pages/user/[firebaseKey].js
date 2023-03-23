@@ -119,10 +119,10 @@ export default function Profile() {
       </div>
       {profileOwner.firebaseKey === profileViewer.firebaseKey ? (
         <Link href={`/user/edit/${profileOwner.firebaseKey}`} passHref>
-          <Button variant="outline-dark" className="m-2">edit profile</Button>
+          <Button variant="outline-dark" className="m-1">edit profile</Button>
         </Link>
       ) : ''}
-      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={deleteUserAndUserData}>Delete Account</Button>) : ''}
+      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-1" onClick={deleteUserAndUserData}>delete account</Button>) : ''}
     </div>
   );
 }

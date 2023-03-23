@@ -89,10 +89,10 @@ export default function UserForm({ obj }) {
             required
           />
         </FloatingLabel>
-        <Button type="submit" variant="outline-dark" className="m-2 text-color-drkblu">{obj.firebaseKey ? 'Update' : 'Create'}</Button>
-        <button type="button" className="btn btn-danger" onClick={signOut}>
+        <Button type="submit" variant="outline-dark" className="m-1">{obj.firebaseKey ? 'Update' : 'Create'}</Button>
+        <Button type="button" className="m-1" onClick={signOut}>
           Sign Out
-        </button>
+        </Button>
       </Form>
     </div>
   );

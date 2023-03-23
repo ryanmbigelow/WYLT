@@ -101,14 +101,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .m-2:hover {
   background-color: #fbcd9f;
-  width: 40%;
+  width: 101px;
+  height: 38px;
   border: 1px solid #161925;
   color: #161925;
 }
 
 .m-2:active {
   background-color: #ff8000;
-  width: 40%;
+  width: 101px;
+  height: 38px;
   border: 1px solid #161925;
   color: #161925;
 }
@@ -130,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #ACACDE;
   margin: 1%;
   display: flex;
-  width: 30%;
+  width: 31.33%;
   height: 120px;
   display: flex;
   flex-direction: row;

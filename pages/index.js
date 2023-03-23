@@ -50,9 +50,9 @@ function Home() {
         </div>
       </div>
       <p>Click the button below to logout!</p>
-      <button className="btn btn-danger btn-lg copy-btn" type="button" onClick={signOut}>
+      <Button className="m-1" type="button" onClick={signOut}>
         Sign Out
-      </button>
+      </Button>
     </div>
   );
 }
