@@ -18,23 +18,23 @@ const initialStateSong = {
 export default function SongForm({ songObj }) {
   const [formInput, setFormInput] = useState(initialStateSong);
   const router = useRouter();
-  const { user } = useAuth();
+  const { uid } = useAuth();
 
   // FUNCTION TO GET THE APP USER OBJECT
   const [appUser, setAppUser] = useState({});
   const getAppUser = () => {
     getUsers().then((userArr) => {
-      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      const appUserObj = userArr.find((userObj) => userObj.uid === uid);
       setAppUser(appUserObj);
     });
   };
   useEffect(() => {
     getAppUser();
-  }, [user]);
+  }, [uid]);
 
   useEffect(() => {
     if (songObj.firebaseKey) setFormInput(songObj);
-  }, [songObj, user]);
+  }, [songObj, uid]);
 
   // FUNCTION TO CONVERT THE YOUTUBE LINK TO A YOUTUBE EMBED LINK
   const convertLink = (payload) => {
