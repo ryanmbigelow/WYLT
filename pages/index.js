@@ -4,8 +4,8 @@ import { Button } from 'react-bootstrap';
 import SongCard from '../components/cards/SongCard';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { getFollowsSongs } from '../api/mergedData';
 import { getUsers } from '../api/userData';
+import { getAllSongs } from '../api/songData';
 
 function Home() {
   const { user } = useAuth();
@@ -25,9 +25,7 @@ function Home() {
   // FUNCTION TO GET THE SONGS FROM A USER'S FOLLOWS
   const [songs, setSongs] = useState([]);
   const getAllTheSongs = () => {
-    if (appUser) {
-      getFollowsSongs(appUser.firebaseKey).then(setSongs);
-    }
+    getAllSongs().then(setSongs);
   };
   useEffect(() => {
     getAllTheSongs();
