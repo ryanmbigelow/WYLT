@@ -78,41 +78,41 @@ export default function SongForm({ songObj }) {
 
   return (
     <div>
-      <Head><title>{songObj.firebaseKey ? `Update ${songObj.title}` : 'Create Song'}</title></Head>
+      <Head><title>{songObj.firebaseKey ? `update ${songObj.title}` : 'create song'}</title></Head>
       <Form onSubmit={handleSubmit} className="text-color-drkblu">
-        <h2 className="mt-5 text-center">{songObj.firebaseKey ? `Update ${songObj.title}` : 'Create Song'}</h2>
+        <h2 className="mt-5 text-center">{songObj.firebaseKey ? `update ${songObj.title}` : 'create song'}</h2>
         <div className="mt-5" />
-        <div className="">Title</div>
+        <div className=""><b>title</b></div>
         <FloatingLabel
           controlId="floatingInput1"
-          label="Song Title"
+          label="song title"
           className="mb-3"
         >
           <Form.Control
             type="text"
-            placeholder="Song Title"
+            placeholder="song title"
             name="title"
             value={formInput.title}
             onChange={handleChange}
             required
           />
         </FloatingLabel>
-        <div className="">Artist</div>
+        <div className=""><b>artist</b></div>
         <FloatingLabel
           controlId="floatingInput2"
-          label="Artist"
+          label="artist"
           className="mb-3"
         >
           <Form.Control
             type="text"
-            placeholder="Artist"
+            placeholder="artist"
             name="artist"
             value={formInput.artist}
             onChange={handleChange}
             required
           />
         </FloatingLabel>
-        <div className="">YouTube Embed Link</div>
+        <div className=""><b>youtube link</b> (copy the youtube link from your browser)</div>
         <FloatingLabel
           controlId="floatingInput3"
           label="YouTube Embed Link"
@@ -127,7 +127,7 @@ export default function SongForm({ songObj }) {
             required
           />
         </FloatingLabel>
-        <Button type="submit" variant="outline-dark" className="m-1 text-color-drkblu">{songObj.firebaseKey ? 'Update' : 'Create'}</Button>
+        <Button type="submit" variant="outline-dark" className="m-1 text-color-drkblu">{songObj.firebaseKey ? 'update' : 'create'}</Button>
       </Form>
     </div>
   );

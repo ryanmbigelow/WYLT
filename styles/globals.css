@@ -245,3 +245,23 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
 }
+
+/* Sign In Button */
+.btn.btn-primary {
+  background-color: #FFB86F;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.btn.btn-primary:hover {
+  background-color: #fbcd9f;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.btn.btn-primary:active {
+  background-color: #ff8000;
+
+  border: 1px solid #161925;
+  color: #161925;
+}

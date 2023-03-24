@@ -42,7 +42,7 @@ function Home() {
       <div>
         <h3 className="pageheaderflexwrap">songs</h3>
         <div className="songcardcontainer">
-          {songs.length === 0 ? (<h5>no songs found</h5>)
+          {songs.length === 0 ? (<p>no songs found</p>)
             : (songs.map((song) => (
               <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
             )))}

@@ -114,14 +114,14 @@ export default function Profile() {
       <div>
         <h3 className="pageheaderflexwrap">songs</h3>
         <div className="songcardcontainer">
-          {songs.length === 0 ? (<h5>no songs found</h5>)
+          {songs.length === 0 ? (<p>no songs found</p>)
             : (songs.map((song) => (
               <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
             )))}
         </div>
         <h3 className="pageheaderflexwrap">follows</h3>
         <div className="friendcardcontainer">
-          {follows.length === 0 ? (<h5>no follows found</h5>)
+          {follows.length === 0 ? (<p>no follows found</p>)
             : (follows.map((follow) => (
               <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
             )))}
