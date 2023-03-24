@@ -40,11 +40,12 @@ function Home() {
         </Link>
       </div>
       <div>
-        <h3>songs</h3>
+        <h3 className="pageheaderflexwrap">songs</h3>
         <div className="songcardcontainer">
-          {songs.map((song) => (
-            <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
-          ))}
+          {songs.length === 0 ? (<h5>no songs found</h5>)
+            : (songs.map((song) => (
+              <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
+            )))}
         </div>
       </div>
       <p>Click the button below to logout!</p>

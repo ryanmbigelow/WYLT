@@ -57,15 +57,19 @@ export default function SearchResult() {
 
   return (
     <div>
+      <h3 className="pageheaderflexwrap">songs</h3>
       <div className="songcardcontainer">
-        {searchSongResults.map((obj) => (
-          <SongCard key={obj.firebaseKey} songObj={obj} onUpdate={getSearchSongResults} />
-        ))}
+        {searchSongResults.length === 0 ? (<h5>no songs found</h5>)
+          : (searchSongResults.map((song) => (
+            <SongCard key={song.firebaseKey} songObj={song} onUpdate={getSearchSongResults} />
+          )))}
       </div>
+      <h3 className="pageheaderflexwrap">users</h3>
       <div className="friendcardcontainer">
-        {searchUserResults.map((obj) => (
-          <FriendCard key={obj.firebaseKey} friendObj={obj} onUpdate={getSearchUserResults} appUser={appUser} />
-        ))}
+        {searchUserResults.length === 0 ? (<h5>no users found</h5>)
+          : (searchUserResults.map((follow) => (
+            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getSearchUserResults} appUser={appUser} />
+          )))}
       </div>
     </div>
   );

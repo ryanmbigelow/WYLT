@@ -72,6 +72,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #161925;
 }
 
 .songcardbodytext {
@@ -145,6 +147,8 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #161925;
 }
 
 .friendcardprofile {
@@ -198,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .m-1 {
   background-color: #FFB86F;
-  width: 20%;
+  width: 15%;
   padding: 1%;
   border: 1px solid #161925;
   color: #161925;
@@ -206,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .m-1:hover {
   background-color: #fbcd9f;
-  width: 20%;
+  width: 15%;
   padding: 1%;
   border: 1px solid #161925;
   color: #161925;
@@ -214,7 +218,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .m-1:active {
   background-color: #ff8000;
-  width: 20%;
+  width: 15%;
   padding: 1%;
   border: 1px solid #161925;
   color: #161925;
