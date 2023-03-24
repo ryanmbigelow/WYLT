@@ -48,10 +48,9 @@ function Home() {
             )))}
         </div>
       </div>
-      <p>Click the button below to logout!</p>
-      <Button className="m-1" type="button" onClick={signOut}>
-        Sign Out
-      </Button>
+      <div className="bigbuttonsflexbox">
+        <Button type="button" className="m-1" onClick={signOut}>sign out</Button>
+      </div>
     </div>
   );
 }

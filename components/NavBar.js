@@ -39,8 +39,8 @@ export default function NavBar({ user }) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Add" id="navbarScrollingDropdown">
+            <Nav.Link href="/">home</Nav.Link>
+            <NavDropdown title="add" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/song/new">add a song</NavDropdown.Item>
               <NavDropdown.Item href="/user/add">add friends</NavDropdown.Item>
             </NavDropdown>
