@@ -1,4 +1,4 @@
-import { deleteSingleSong, getSongs } from './songData';
+import { deleteSingleSong, getSongs, getSingleSong } from './songData';
 import {
   deleteSingleUser, getSingleUser, getUserCollectionSongs, getUserSongs,
 } from './userData';
@@ -48,10 +48,13 @@ const getUserFollows = (firebaseKey) => new Promise((resolve, reject) => {
 
 // GET ALL SONGS FROM USER FOLLOWS
 const getFollowsSongs = (firebaseKey) => new Promise((resolve, reject) => {
-  getUserFollows(firebaseKey).then((followArr) => {
-    const followsArray = followArr.map((follow) => getSongs(follow.firebaseKey));
-    Promise.all(followsArray);
-    followsArray.forEach((song) => resolve(song));
+  getUserFollows(firebaseKey).then((userArr) => {
+    const userSongsArr = userArr.map((user) => getSongs(user.firebaseKey));
+    Promise.all(userSongsArr).then((songsArr) => {
+      console.warn(songsArr);
+      const userSongs = songsArr.map((song) => getSingleSong((song.firebaseKey)));
+      Promise.all(userSongs).then(resolve);
+    });
   }).catch(reject);
 });
 
