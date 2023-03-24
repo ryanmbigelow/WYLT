@@ -54,35 +54,35 @@ export default function UserForm({ obj }) {
 
   return (
     <div className="board-form-container">
-      <Head><title>Create an Account</title></Head>
+      <Head><title>{obj.firebaseKey ? 'update' : 'create an'} account</title></Head>
 
       <Form onSubmit={handleSubmit} className="text-color-drkblu">
         <h2 className="mt-5 text-center">{obj.firebaseKey ? 'update' : 'create an'} account</h2>
         <div className="mt-5" />
-        <div className="">Username</div>
+        <div className=""><b>username</b></div>
         <FloatingLabel
           controlId="floatingInput1"
-          label="Username"
+          label="username"
           className="mb-3"
         >
           <Form.Control
             type="text"
-            placeholder="Username"
+            placeholder="username"
             name="username"
             value={formInput.username}
             onChange={handleChange}
             required
           />
         </FloatingLabel>
-        <div className="">Profile Image</div>
+        <div className=""><b>profile image</b> (right click on an image and select &apos;copy image address&apos;)</div>
         <FloatingLabel
           controlId="floatingInput2"
-          label="Profile Picture Image URL"
+          label="profile picture image url"
           className="mb-3"
         >
           <Form.Control
             type="url"
-            placeholder="Profile Picture Image URL"
+            placeholder="profile picture image url"
             name="profile_picture"
             value={formInput.profile_picture}
             onChange={handleChange}
