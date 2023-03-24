@@ -35,9 +35,14 @@ function Home() {
     <div>
       <div className="pageheaderflexwrap">
         <h1>hey {appUser.username}! </h1>
-        <Link href="/song/new" passHref>
-          <Button variant="outline-dark" className="m-1">Add a Song</Button>
-        </Link>
+        <div className="indexheaderbuttons">
+          <Link href="/song/new" passHref>
+            <Button variant="outline-dark" className="btn btn-secondary">add a song</Button>
+          </Link>
+          <Link href="/user/add" passHref>
+            <Button variant="outline-dark" className="btn btn-secondary">add friends</Button>
+          </Link>
+        </div>
       </div>
       <div>
         <h3 className="pageheaderflexwrap">songs</h3>
