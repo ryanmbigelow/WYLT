@@ -100,10 +100,17 @@ export default function Profile() {
 
   return (
     <div>
-      <div>
-        {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>Unfollow</Button>) : ''}
-        {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
+      <div className="profileheader">
+        <div className="profileheaderleft">
+          <img src={profileOwner.profile_picture} alt="userURL" width="150px" height="150px" className="border-radius-image" />
+          <h2>@{profileOwner.username}</h2>
+        </div>
+        <div>
+          {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>Unfollow</Button>) : ''}
+          {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
+        </div>
       </div>
+      <div />
       <div>
         <h3 className="pageheaderflexwrap">songs</h3>
         <div className="songcardcontainer">
