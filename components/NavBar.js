@@ -42,7 +42,7 @@ export default function NavBar({ user }) {
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Add" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/song/new">add a song</NavDropdown.Item>
-              <NavDropdown.Item href="/board/new">add friends</NavDropdown.Item>
+              <NavDropdown.Item href="/user/add">add friends</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <SearchBar className="d-flex" />
