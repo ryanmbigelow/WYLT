@@ -54,6 +54,31 @@ h1, h2, h3, h4, h5, h6 {
   align-items: baseline;
 }
 
+.indexheaderbuttons {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn.btn-secondary {
+  background-color: #FFB86F;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.btn.btn-secondary:hover {
+  background-color: #fbcd9f;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.btn.btn-secondary:active {
+  background-color: #ff8000;
+
+  border: 1px solid #161925;
+  color: #161925;
+}
+
 /* Nav Bar */
 
 #navbar {
