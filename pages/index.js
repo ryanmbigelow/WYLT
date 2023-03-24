@@ -8,19 +8,19 @@ import { getUsers } from '../api/userData';
 import { getAllSongs } from '../api/songData';
 
 function Home() {
-  const { user } = useAuth();
+  const { uid } = useAuth();
 
   // FUNCTION TO GET THE APP USER OBJECT
   const [appUser, setAppUser] = useState({});
   const getAppUser = () => {
     getUsers().then((userArr) => {
-      const appUserObj = userArr.find((userObj) => userObj.uid === user.uid);
+      const appUserObj = userArr.find((userObj) => userObj.uid === uid);
       setAppUser(appUserObj);
     });
   };
   useEffect(() => {
     getAppUser();
-  }, [user]);
+  }, [uid]);
 
   // FUNCTION TO GET THE SONGS FROM A USER'S FOLLOWS
   const [songs, setSongs] = useState([]);
@@ -29,7 +29,7 @@ function Home() {
   };
   useEffect(() => {
     getAllTheSongs();
-  }, [appUser]);
+  }, []);
 
   return (
     <div>
