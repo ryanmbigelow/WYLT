@@ -39,6 +39,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2%;
 }
 
+.profileheader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #161925;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+}
+
+.profileheaderleft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
 /* Nav Bar */
 
 #navbar {
@@ -72,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   border-bottom: 1px solid #161925;
 }
 
@@ -147,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   border-bottom: 1px solid #161925;
 }
 
