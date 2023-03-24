@@ -57,7 +57,7 @@ export default function UserForm({ obj }) {
       <Head><title>Create an Account</title></Head>
 
       <Form onSubmit={handleSubmit} className="text-color-drkblu">
-        <h2 className="mt-5 text-center">Create an Account</h2>
+        <h2 className="mt-5 text-center">{obj.firebaseKey ? 'update' : 'create an'} account</h2>
         <div className="mt-5" />
         <div className="">Username</div>
         <FloatingLabel
@@ -89,10 +89,10 @@ export default function UserForm({ obj }) {
             required
           />
         </FloatingLabel>
-        <Button type="submit" variant="outline-dark" className="m-1">{obj.firebaseKey ? 'Update' : 'Create'}</Button>
-        <Button type="button" className="m-1" onClick={signOut}>
-          Sign Out
-        </Button>
+        <div className="bigbuttonsflexbox">
+          <Button type="submit" variant="outline-dark" className="m-1">{obj.firebaseKey ? 'update' : 'create'}</Button>
+          <Button type="button" className="m-1" onClick={signOut}>sign out</Button>
+        </div>
       </Form>
     </div>
   );

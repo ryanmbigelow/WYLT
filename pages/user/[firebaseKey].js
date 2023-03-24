@@ -10,6 +10,7 @@ import { getSongs } from '../../api/songData';
 import { getSingleUser, getUsers } from '../../api/userData';
 import FriendCard from '../../components/cards/FriendCard';
 import SongCard from '../../components/cards/SongCard';
+import { signOut } from '../../utils/auth';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function Profile() {
@@ -119,12 +120,15 @@ export default function Profile() {
             )))}
         </div>
       </div>
-      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (
-        <Link href={`/user/edit/${profileOwner.firebaseKey}`} passHref>
-          <Button variant="outline-dark" className="m-1">edit profile</Button>
-        </Link>
-      ) : ''}
-      {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-1" onClick={deleteUserAndUserData}>delete account</Button>) : ''}
+      <div className="bigbuttonsflexbox">
+        {profileOwner.firebaseKey === profileViewer.firebaseKey ? (
+          <Link href={`/user/edit/${profileOwner.firebaseKey}`} passHref>
+            <Button variant="outline-dark" className="m-1">edit profile</Button>
+          </Link>
+        ) : ''}
+        {profileOwner.firebaseKey === profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-1" onClick={deleteUserAndUserData}>delete account</Button>) : ''}
+        <Button type="button" className="m-1" onClick={signOut}>sign out</Button>
+      </div>
     </div>
   );
 }

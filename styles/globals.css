@@ -223,3 +223,10 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #161925;
   color: #161925;
 }
+
+.bigbuttonsflexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
