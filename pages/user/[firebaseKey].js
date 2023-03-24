@@ -104,17 +104,19 @@ export default function Profile() {
         {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
       </div>
       <div>
-        <h3>songs</h3>
+        <h3 className="pageheaderflexwrap">songs</h3>
         <div className="songcardcontainer">
-          {songs.map((song) => (
-            <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
-          ))}
+          {songs.length === 0 ? (<h5>no songs found</h5>)
+            : (songs.map((song) => (
+              <SongCard key={song.firebaseKey} songObj={song} onUpdate={getAllTheSongs} />
+            )))}
         </div>
-        <h3>follows</h3>
+        <h3 className="pageheaderflexwrap">follows</h3>
         <div className="friendcardcontainer">
-          {follows.map((follow) => (
-            <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} onUpdate2={getAllFollows} appUser={profileOwner} />
-          ))}
+          {follows.length === 0 ? (<h5>no follows found</h5>)
+            : (follows.map((follow) => (
+              <FriendCard key={follow.firebaseKey} friendObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
+            )))}
         </div>
       </div>
       {profileOwner.firebaseKey === profileViewer.firebaseKey ? (
