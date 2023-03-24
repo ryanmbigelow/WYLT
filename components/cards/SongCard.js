@@ -33,7 +33,6 @@ export default function SongCard({ songObj, onUpdate }) {
         <div className="songcardbodytext">
           <h5>{songObj.title}</h5>
           <h6>{songObj.artist}</h6>
-          <h6>uploaded by {songObj.artist}</h6>
         </div>
         <div className="cardbuttonsflexwrap">
           <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
