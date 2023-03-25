@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import { signIn } from '../utils/auth';
 
 function Signin() {
@@ -13,11 +13,13 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>wylt?</h1>
-      <p>share what you&apos;re listening to</p>
-      <Button type="button" className="btn btn-primary" onClick={signIn}>
-        Sign In
-      </Button>
+      <div className="signinpage">
+        <Image src="/logo1.png" alt="wylt logo" width={600} height={192} />
+        <h5>share what you&apos;re listening to</h5>
+        <Button type="button" className="btn btn-primary" onClick={signIn}>
+          Sign In
+        </Button>
+      </div>
     </div>
   );
 }
