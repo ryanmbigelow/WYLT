@@ -26,6 +26,16 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+.signinpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signinpage > * {
+  margin: 8%;
+}
+
 /* Headers and Footers */
 
 .pageheaderflexwrap {

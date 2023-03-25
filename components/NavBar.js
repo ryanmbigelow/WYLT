@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { NavDropdown } from 'react-bootstrap';
-// import logo from '../images/logo.png';
+import { NavDropdown, Image } from 'react-bootstrap';
 import SearchBar from './SearchBar';
 import { getUsers } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
@@ -29,9 +28,9 @@ export default function NavBar({ user }) {
   return (
     <Navbar expand="lg" id="navbar">
       <Container fluid>
-        {/* <Nav.Link href="/">
-          <Image src={logo} alt="logo" width={100} height={50} />
-        </Nav.Link> */}
+        <Nav.Link href="/">
+          <Image src="/logo1.png" alt="wylt logo" width={100} height={32} />
+        </Nav.Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -39,7 +38,6 @@ export default function NavBar({ user }) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">home</Nav.Link>
             <NavDropdown title="add" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/song/new">add a song</NavDropdown.Item>
               <NavDropdown.Item href="/user/add">add friends</NavDropdown.Item>
