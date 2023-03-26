@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { deleteSingleSong } from '../../api/songData';
 import { useAuth } from '../../utils/context/authContext';
-import { getUsers } from '../../api/userData';
+import { getSingleUser, getUsers } from '../../api/userData';
 
 export default function SongCard({ songObj, onUpdate }) {
   // FUNCTION TO GET THE APP USER OBJECT
@@ -20,6 +20,11 @@ export default function SongCard({ songObj, onUpdate }) {
     getAppUser();
   }, [uid]);
 
+  // FUNCTION TO GET THE USER WHO UPLOADED THE SONG
+  const [songUser, setSongUser] = useState({});
+  const getSongUser = () => getSingleUser(songObj.user_id).then(setSongUser);
+  useEffect(() => getSongUser(), [songObj]);
+
   const deleteSong = () => {
     if (window.confirm(`Delete ${songObj.title} by ${songObj.artist} from your collection?`)) {
       deleteSingleSong(songObj.firebaseKey).then(() => onUpdate());
@@ -33,6 +38,12 @@ export default function SongCard({ songObj, onUpdate }) {
         <div className="songcardbodytext">
           <h5>{songObj.title}</h5>
           <h6>{songObj.artist}</h6>
+          <h6>uploaded by: {songUser.username}</h6>
+        </div>
+        <div className="viewcardbuttonsflexwrap">
+          <Link href={`/user/${songUser.firebaseKey}`} passHref>
+            {songObj.user_id !== appUser.firebaseKey ? (<Button type="button" className="m-2 viewprofile">view profile</Button>) : '' }
+          </Link>
         </div>
         <div className="cardbuttonsflexwrap">
           <Link href={`/song/edit/${songObj.firebaseKey}`} passHref>
