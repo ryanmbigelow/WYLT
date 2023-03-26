@@ -201,7 +201,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 3%;
 }
 
 .viewcardbuttonsflexwrap {
