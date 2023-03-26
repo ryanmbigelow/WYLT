@@ -173,9 +173,40 @@ h1, h2, h3, h4, h5, h6 {
   color: #161925;
 }
 
+.m-2.viewprofile {
+  background-color: #FFB86F;
+  width: 202px;
+  height: 38px;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-2.viewprofile:hover {
+  background-color: #fbcd9f;
+  width: 202px;
+  height: 38px;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
+.m-2.viewprofile:active {
+  background-color: #ff8000;
+  width: 202px;
+  height: 38px;
+  border: 1px solid #161925;
+  color: #161925;
+}
+
 .cardbuttonsflexwrap {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  padding-top: 3%;
+}
+
+.viewcardbuttonsflexwrap {
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-top: 1px solid #161925;
   padding-top: 3%;
