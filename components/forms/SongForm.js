@@ -38,9 +38,16 @@ export default function SongForm({ songObj }) {
 
   // FUNCTION TO CONVERT THE YOUTUBE LINK TO A YOUTUBE EMBED LINK
   const convertLink = (payload) => {
-    const [, videoID] = payload.split('watch?v=');
-    const embedLink = `https://www.youtube.com/embed/${videoID}`;
-    return embedLink;
+    if (payload.includes('watch?v=')) {
+      const [, videoID] = payload.split('watch?v=');
+      const embedLink = `https://www.youtube.com/embed/${videoID}`;
+      return embedLink;
+    } if (payload.includes('youtu.be')) {
+      const [, videoID] = payload.split('youtu.be/');
+      const embedLink = `https://www.youtube.com/embed/${videoID}`;
+      return embedLink;
+    }
+    return payload;
   };
 
   // EVENT HANDLERS
