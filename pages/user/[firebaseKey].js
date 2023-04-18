@@ -108,6 +108,9 @@ export default function Profile() {
         <div>
           {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={unfollowUser}>Unfollow</Button>) : ''}
           {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2" onClick={followUser}>Follow</Button>) : ''}
+          <Link href="/song/new" passHref>
+            <Button variant="outline-dark" className="btn btn-secondary">add a song</Button>
+          </Link>
         </div>
       </div>
       <div />

@@ -16,7 +16,7 @@ https://docs.google.com/presentation/d/1LnX-OKhVp0wDQlWMRxG_REH8j7aN8Yghe-aVaYE-
 https://github.com/users/ryanmbigelow/projects/3
 
 ## User Description
-- somone who wants to catalog music they love
+- someone who wants to catalog music they love
 - someone who wants to share the music they love with the world
 - someone who wants to follow others' musical journeys
 - someone who wants to make connections via a mutual love of music

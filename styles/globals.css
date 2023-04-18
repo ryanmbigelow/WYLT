@@ -90,7 +90,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn.btn-secondary:active {
   background-color: #ff8000;
-
   border: 1px solid #161925;
   color: #161925;
 }
@@ -209,6 +208,13 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   border-top: 1px solid #161925;
   padding-top: 3%;
+}
+
+.youtubevideo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4%;
 }
 
 /* Friend Cards */

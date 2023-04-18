@@ -74,15 +74,15 @@ export default function UserForm({ obj }) {
             required
           />
         </FloatingLabel>
-        <div className=""><b>profile image</b> (right click on an image and select &apos;copy image address&apos;)</div>
+        <div className=""><b>profile image</b></div>
         <FloatingLabel
           controlId="floatingInput2"
-          label="profile picture image url"
+          label="right click or cmd+click on an image from another website and select &apos;copy image address&apos;"
           className="mb-3"
         >
           <Form.Control
             type="url"
-            placeholder="profile picture image url"
+            placeholder="profile image"
             name="profile_picture"
             value={formInput.profile_picture}
             onChange={handleChange}
